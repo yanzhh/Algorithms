@@ -12,14 +12,14 @@ class heap(object):
     
     def left(self, i):
         l = (i<<1)  #left/right index of node i's children
-        if l <= len(self.heaplist) -1:
+        if l <= self.size:
             return l
         else:
             return None
         
     def right(self, i):
         r = (i<<1) + 1 #left/right index of node i's children
-        if r <= len(self.heaplist) -1:
+        if r <= self.size:
             return r
         else:
             return None
@@ -43,13 +43,13 @@ class heap(object):
     def insert(self,x):
         self.heaplist.append(x)
         self.size += 1
-        idx = len(self.heaplist)-1
+        idx = self.size
         while self.heaplist[idx//2] < x:
             self.exchange(self, idx, idx//2)
             idx = idx // 2
             
 #    def maxheapify(self,i): #A[i], A[left[i]], A[right[i]]中最大的index记为j, 如果j!= i, 则，交换A[i]与A[j], 运行 maxheapify(self,j)
-#        assert i <= len(self.heaplist)-1, 'index is out of range'
+#        assert i <= self.size, 'index is out of range'
 #        l = self.left(i); r = self.right(i)
 #        largest = i
 #        if l!= None and self.heaplist[l] > self.heaplist[largest]:
@@ -61,15 +61,23 @@ class heap(object):
 #            self.maxheapify(largest)
             
     def maxheapify(self,i): #A[i], A[left[i]], A[right[i]]中最大的index记为j, 如果j!= i, 则，交换A[i]与A[j], 运行 maxheapify(self,j)
-        assert i <= len(self.heaplist)-1, 'index is out of range'
+        assert i <= self.size, 'index is out of range'
         largest = i
         maxchild = self.maxchild(i)
         if maxchild != None and self.heaplist[maxchild] > self.heaplist[i]:
             largest = maxchild
-        print('largest', largest)
         if largest != i:
             self.exchange(i,largest)
             self.maxheapify(largest)
-            print('maxheapify', largest)
 
-            
+    # define: buildmaxheap(A,array), produce a max heap from an unordered array.
+    # do maxheapify on indexes of parents in [1, n//2]    
+    def buildmaxheap(self, alist):
+        self.heaplist += alist
+        self.size += len(alist)
+        i = self.size//2
+        while i > 0:
+            self.maxheapify(i)
+            i -= 1
+    
+
