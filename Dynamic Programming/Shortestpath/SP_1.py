@@ -32,36 +32,38 @@ def sp_rec(Adj, s, v):
 # Naive algorithm which can return the shortest path
 def sp_rec1(Adj, s, v, pre):
     """Adj: Adjacent list of a DAG; s: start point; v: target; pre: dictionary, store the predecessor of nodes on the shortest path from s to v"""
+    
     if v == s:
-        print('pre of',v,pre)
         return 0, pre
     elif neighbour(Adj,v) == []:
-        print('pre of',v,pre)
         return inf, pre
     else:
         d = {}
         for node in neighbour(Adj,v):
-            print('pre before',node,'v',v)
-            dist,pre1 = sp_rec1(Adj, s, node, pre)
+            dist,pre1 = sp_rec1(Adj,s,node,pre)
             dist = dist + Adj[node][v]
-            d[dist] = (node, pre1)
-            print('d of',node, 'pre1',pre1)
-        print('d of',v, d)
+            d[dist] = node
+        print('d of',v,d)
+        print('pre of',v,pre)
         m = min(d)
         p = d[m]   
-        pre = p[1]
-        pre[v] = p[0]
-        print('pre of',v,pre)
+        pre[v] = p
+        print('pre after rec of',v, pre)
         return m, pre
     
+    
+    
+
+
+
 #Describe the graphs by Adjacent list 
 # DAG in Ex.1
 Adj1 = {'r':{'s':5, 't':3}, 's':{'t':2, 'x':6}, 't':{'x':7, 'y':4, 'z':2}, 'x':{'y':-1, 'z':1}, 'y':{'z':-2}, 'z':{}}
 s = 's'; v = 'x'
 print('length of shortest path from', s, 'to', v, 'is', sp_rec(Adj1,s,v))
 
-
-length, prelist = sp_rec1(Adj1,s,v,{})
+pre = {}
+length, prelist = sp_rec1(Adj1,s,v,pre)
 print(length, prelist)
 
 ##Define a graph by Adjacent list 
