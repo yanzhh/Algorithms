@@ -1,0 +1,18 @@
+Main Steps
+Solutions using dynamic programming all have a number of common points.
+Step 1: Define your sub-problem. Describe in English what your sub-problem means, whether it
+look like P(k) or R(i, j) or anything else. For example, you might write “Let S(k) be the largest
+number of monkeys you can cram into the first k boxcars”.
+Step 2: Present your recurrence. Give a mathematical definition of your sub-problem in terms of
+“smaller” sub-problems.
+Step 3: Prove that your recurrence is correct. Usually a small paragraph.
+Step 4: State your base cases. Sometimes only one or two bases cases are needed, and sometimes
+you’ll need a lot (say O(n)). The later case typically comes up when dealing with multi-variate
+sub-problems. You want to make sure that the base cases are enough to get your algorithm off
+the ground.
+Step 5: Present the algorithm. This often involves initializing the base cases and then using your
+recurrence to solve all the remaining sub-problems. You want to ensure that by filling in your
+table of sub-problems in the correct order, you can compute all the required solutions. Finally,
+generate the desired solution. Often this is the solution to one of your sub-problems, but not
+always.
+Step 6: Running time. As usual.

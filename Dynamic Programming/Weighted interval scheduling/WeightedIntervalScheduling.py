@@ -6,7 +6,7 @@ Created on Wed Jul 18 16:47:31 2018
 """
 import bisect
 
-class job(object):
+class wjob(object):
     def __init__(self, title, start, finish, weight):
         """title: job title; start: start time; finish: finish time"""
         self.title = title
@@ -56,7 +56,7 @@ def solve(joblist):
     return OPT(p, joblist, mem, len(joblist))
 
 if __name__ == '__main__':
-    joblist = [job(7,6,10,2), job(4,4,7,4), job(1,1,4,5),job(6,5,9,5), job(2,3,5,1), job(5,3,8,6), job(3,0,6,8), job(8,8,11,4)]
+    joblist = [wjob(7,6,10,2), wjob(4,4,7,4), wjob(1,1,4,5),wjob(6,5,9,5), wjob(2,3,5,1), wjob(5,3,8,6), wjob(3,0,6,8), wjob(8,8,11,4)]
     print(solve(joblist))
     
     
