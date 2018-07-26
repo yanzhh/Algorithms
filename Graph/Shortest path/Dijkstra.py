@@ -64,14 +64,14 @@ def Dijkstra(Adj, s):
 #Dijkstra(Adj, s)
 #Q = initial(Adj, s)
 Q = pq()
-for i in Adj.keys():
-    for j in Adj[i].keys():
-        
-for i in Adj.keys():
-    u = node(i, s)
-    if u.name == s:
-        u.d = 0
-    Q.put((u.d,u)) 
+#for i in Adj.keys():
+#    for j in Adj[i].keys():
+#        
+for i in Adj:
+   u = node(i, s)
+   if u.name == s:
+       u.d = 0
+   Q.put((u.d,u)) 
 S = []
 print('Q', Q.queue)
 print('S', S)

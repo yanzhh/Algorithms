@@ -6,7 +6,7 @@ Created on Sat Jul  7 00:35:17 2018
 """
 
 import sys
-sys.path.append('/Users/Arc/Documents/GitHub/Algorithms/Data structures/heap')
+sys.path.append('/work/GitHub/Algorithms/Data structures/heap')
 from Heap import maxheap
 
 class maxpriqueue(object):
